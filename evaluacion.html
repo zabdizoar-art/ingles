@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EVALUACION | TAG QUESTIONS</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            padding: 35px 15px;
+            min-height: 100vh;
+            font-family: 'Segoe UI', Arial, sans-serif;
+            color: rgb(35, 65, 100);
+
+            background: linear-gradient(
+                135deg,
+                rgb(155, 215, 250),
+                rgb(65, 155, 225),
+                rgb(195, 230, 255),
+                rgb(85, 175, 235)
+            );
+
+            background-attachment: fixed;
+        }
+
+        .contenedor {
+            width: 100%;
+            max-width: 850px;
+            margin: auto;
+            padding: 35px;
+
+            background: linear-gradient(
+                160deg,
+                rgb(255, 255, 255),
+                rgb(235, 247, 255)
+            );
+
+            border: 2px solid rgb(255, 255, 255);
+            border-radius: 25px;
+
+            box-shadow:
+                0 15px 35px rgba(25, 90, 150, 0.25),
+                0 5px 12px rgba(40, 125, 190, 0.15);
+
+            animation: aparecer 0.8s ease;
+        }
+
+        @keyframes aparecer {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        h1 {
+            color: rgb(255, 255, 255);
+
+            background: linear-gradient(
+                100deg,
+                rgb(25, 95, 170),
+                rgb(65, 165, 225),
+                rgb(85, 185, 235)
+            );
+
+            padding: 22px 15px;
+            margin-top: 0;
+            margin-bottom: 15px;
+
+            font-size: 32px;
+            letter-spacing: 1px;
+            text-align: center;
+
+            border-radius: 15px;
+            border-bottom: 5px solid rgb(125, 215, 255);
+
+            text-shadow: 1px 2px 4px rgba(15, 65, 115, 0.3);
+
+            box-shadow: 0 7px 18px rgba(35, 115, 185, 0.2);
+        }
+
+        .presentacion {
+            text-align: center;
+            font-size: 17px;
+            line-height: 1.7;
+            color: rgb(65, 110, 150);
+            margin-bottom: 25px;
+        }
+
+        .pregunta {
+            background: linear-gradient(
+                120deg,
+                rgb(255, 255, 255),
+                rgb(232, 246, 255)
+            );
+
+            padding: 18px 22px;
+            margin: 20px 0;
+
+            border: 1px solid rgb(190, 225, 250);
+            border-left: 5px solid rgb(65, 155, 225);
+            border-radius: 13px;
+
+            box-shadow: 0 4px 12px rgba(45, 115, 175, 0.08);
+
+            transition: transform 0.3s ease,
+                        box-shadow 0.3s ease;
+        }
+
+        .pregunta:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 9px 20px rgba(35, 110, 180, 0.15);
+        }
+
+        .pregunta p {
+            color: rgb(25, 90, 150);
+            font-size: 17px;
+            font-weight: bold;
+            line-height: 1.6;
+            margin-top: 0;
+            margin-bottom: 15px;
+        }
+
+        .opcion {
+            display: block;
+            padding: 10px 12px;
+            margin: 7px 0;
+
+            color: rgb(45, 75, 110);
+            font-size: 16px;
+            line-height: 1.5;
+
+            background: rgb(245, 251, 255);
+            border: 1px solid rgb(220, 237, 250);
+            border-radius: 9px;
+
+            cursor: pointer;
+            transition: all 0.25s ease;
+        }
+
+        .opcion:hover {
+            background: rgb(215, 239, 255);
+            border-color: rgb(95, 175, 230);
+            color: rgb(20, 90, 155);
+        }
+
+        input[type="radio"] {
+            accent-color: rgb(35, 125, 210);
+            margin-right: 9px;
+            cursor: pointer;
+        }
+
+        input[type="radio"]:focus-visible {
+            outline: 2px solid rgb(35, 125, 210);
+            outline-offset: 3px;
+        }
+
+        .botones {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 15px;
+            flex-wrap: wrap;
+            margin-top: 30px;
+        }
+
+        input[type="submit"],
+        input[type="reset"] {
+            padding: 14px 28px;
+
+            color: rgb(255, 255, 255);
+            font-size: 16px;
+            font-weight: bold;
+            letter-spacing: 0.5px;
+
+            border: 2px solid rgb(150, 215, 250);
+            border-radius: 30px;
+            cursor: pointer;
+
+            transition: all 0.3s ease;
+        }
+
+        input[type="submit"] {
+            background: linear-gradient(
+                135deg,
+                rgb(35, 115, 190),
+                rgb(65, 165, 230)
+            );
+
+            box-shadow: 0 6px 15px rgba(30, 105, 175, 0.25);
+        }
+
+        input[type="reset"] {
+            background: linear-gradient(
+                135deg,
+                rgb(95, 145, 185),
+                rgb(135, 185, 220)
+            );
+        }
+
+        input[type="submit"]:hover,
+        input[type="reset"]:hover {
+            transform: translateY(-3px) scale(1.03);
+            box-shadow: 0 10px 22px rgba(25, 90, 160, 0.3);
+        }
+
+        #resultado {
+            display: none;
+            text-align: center;
+            padding: 20px;
+            margin-top: 25px;
+
+            color: rgb(35, 90, 140);
+            background: linear-gradient(
+                135deg,
+                rgb(218, 240, 255),
+                rgb(235, 248, 255)
+            );
+
+            border: 1px solid rgb(160, 210, 245);
+            border-top: 5px solid rgb(65, 155, 220);
+            border-radius: 15px;
+        }
+
+        #resultado h2 {
+            color: rgb(25, 100, 170);
+        }
+
+        .boton-inicio {
+            display: block;
+            width: fit-content;
+            margin: 30px auto 0;
+            padding: 13px 40px;
+
+            color: rgb(255, 255, 255);
+            background: linear-gradient(
+                135deg,
+                rgb(35, 115, 190),
+                rgb(65, 165, 230)
+            );
+
+            text-decoration: none;
+            text-align: center;
+            font-size: 17px;
+            font-weight: bold;
+            letter-spacing: 1px;
+
+            border: 2px solid rgb(150, 215, 250);
+            border-radius: 35px;
+
+            box-shadow: 0 6px 15px rgba(30, 105, 175, 0.25);
+            transition: all 0.3s ease;
+        }
+
+        .boton-inicio:hover {
+            background: linear-gradient(
+                135deg,
+                rgb(20, 85, 155),
+                rgb(35, 125, 200)
+            );
+
+            transform: translateY(-3px) scale(1.04);
+            box-shadow: 0 10px 22px rgba(25, 90, 160, 0.3);
+        }
+
+        .pie {
+            color: rgb(75, 125, 165);
+            font-size: 13px;
+            text-align: center;
+            margin-top: 28px;
+            padding-top: 15px;
+            border-top: 2px solid rgb(195, 225, 248);
+        }
+
+        @media (max-width: 600px) {
+            body {
+                padding: 15px 10px;
+            }
+
+            .contenedor {
+                padding: 20px 15px;
+                border-radius: 18px;
+            }
+
+            h1 {
+                font-size: 25px;
+                padding: 17px 10px;
+            }
+
+            .pregunta {
+                padding: 15px 12px;
+            }
+
+            .pregunta p {
+                font-size: 16px;
+            }
+
+            .opcion {
+                font-size: 15px;
+            }
+
+            input[type="submit"],
+            input[type="reset"] {
+                width: 100%;
+            }
+
+            .botones {
+                gap: 10px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="contenedor">
+
+        <h1>📝 CUESTIONARIO: TAG QUESTIONS</h1>
+
+        <p class="presentacion">
+            ¡Demuestra lo que sabes de inglés!
+            <br>
+            Lee cada pregunta y selecciona la respuesta correcta.
+        </p>
+
+        <form id="cuestionario">
+
+            <div class="pregunta">
+                <p>1. ¿Cuál es la tag question correcta?</p>
+
+                <label class="opcion">
+                    <input type="radio" name="p1" value="a" required>
+                    She is an artist, isn't she?
+                </label>
+
+                <label class="opcion">
+                    <input type="radio" name="p1" value="b">
+                    She is an artist, is she?
+                </label>
+
+                <label class="opcion">
+                    <input type="radio" name="p1" value="c">
+                    She is an artist, doesn't she?
+                </label>
+            </div>
+
+            <div class="pregunta">
+                <p>2. Si la oración principal es negativa, la tag question debe ser:</p>
+
+                <label class="opcion">
+                    <input type="radio" name="p2" value="a" required>
+                    Negativa
+                </label>
+
+                <label class="opcion">
+                    <input type="radio" name="p2" value="b">
+                    Afirmativa
+                </label>
+
+                <label class="opcion">
+                    <input type="radio" name="p2" value="c">
+                    Sin auxiliar
+                </label>
+            </div>
+
+            <div class="pregunta">
+                <p>3. Completa: You like sushi, _____?</p>
+
+                <label class="opcion">
+                    <input type="radio" name="p3" value="a" required>
+                    don't you?
+                </label>
+
+                <label class="opcion">
+                    <input type="radio" name="p3" value="b">
+                    do you?
+                </label>
+
+                <label class="opcion">
+                    <input type="radio" name="p3" value="c">
+                    aren't you?
+                </label>
+            </div>
+
+            <div class="pregunta">
+                <p>4. Completa: Paul played the guitar, _____?</p>
+
+                <label class="opcion">
+                    <input type="radio" name="p4" value="a" required>
+                    doesn't he?
+                </label>
+
+                <label class="opcion">
+                    <input type="radio" name="p4" value="b">
+                    didn't he?
+                </label>
+
+                <label class="opcion">
+                    <input type="radio" name="p4" value="c">
+                    isn't he?
+                </label>
+            </div>
+
+            <div class="pregunta">
+                <p>5. ¿Cuál es la tag question correcta?</p>
+
+                <label class="opcion">
+                    <input type="radio" name="p5" value="a" required>
+                    They are your classmates, aren't they?
+                </label>
+
+                <label class="opcion">
+                    <input type="radio" name="p5" value="b">
+                    They are your classmates, are they?
+                </label>
+
+                <label class="opcion">
+                    <input type="radio" name="p5" value="c">
+                    They are your classmates, don't they?
+                </label>
+            </div>
+
+            <div class="pregunta">
+                <p>6. ¿Para qué se utilizan principalmente las Tag Questions?</p>
+
+                <label class="opcion">
+                    <input type="radio" name="p6" value="a" required>
+                    Para confirmar información
+                </label>
+
+                <label class="opcion">
+                    <input type="radio" name="p6" value="b">
+                    Para formar plurales
+                </label>
+
+                <label class="opcion">
+                    <input type="radio" name="p6" value="c">
+                    Para cambiar el tiempo verbal
+                </label>
+            </div>
+
+            <div class="pregunta">
+                <p>7. Completa: We can't reserve a table, _____?</p>
+
+                <label class="opcion">
+                    <input type="radio" name="p7" value="a" required>
+                    can't we?
+                </label>
+
+                <label class="opcion">
+                    <input type="radio" name="p7" value="b">
+                    can we?
+                </label>
+
+                <label class="opcion">
+                    <input type="radio" name="p7" value="c">
+                    do we?
+                </label>
+            </div>
+
+            <div class="botones">
+                <input type="submit" value="Enviar respuestas">
+                <input type="reset" value="Volver a empezar">
+            </div>
+
+        </form>
+
+        <div id="resultado" aria-live="polite">
+            <h2>¡Resultados de tu evaluación!</h2>
+            <p id="calificacion"></p>
+            <p id="mensaje"></p>
+        </div>
+
+        <a href="index1.html" class="boton-inicio">
+            🏠 INICIO
+        </a>
+
+        <div class="pie">
+            Evaluación de inglés | Tag Questions
+        </div>
+
+    </div>
+
+    <script>
+        const formulario = document.getElementById("cuestionario");
+
+        formulario.addEventListener("submit", function(event) {
+            event.preventDefault();
+
+            const respuestas = {
+                p1: "a",
+                p2: "b",
+                p3: "a",
+                p4: "b",
+                p5: "a",
+                p6: "a",
+                p7: "b"
+            };
+
+            let puntos = 0;
+
+            for (let pregunta in respuestas) {
+                const seleccionada = formulario.querySelector(
+                    'input[name="' + pregunta + '"]:checked'
+                );
+
+                if (seleccionada &&
+                    seleccionada.value === respuestas[pregunta]) {
+                    puntos++;
+                }
+            }
+
+            document.getElementById("resultado").style.display = "block";
+
+            document.getElementById("calificacion").textContent =
+                "Obtuviste " + puntos + " de 7 puntos.";
+
+            let mensaje = "";
+
+            if (puntos === 7) {
+                mensaje = "¡Excelente! Dominas las Tag Questions. 🌟";
+            } else if (puntos >= 5) {
+                mensaje = "¡Muy bien! Vas por buen camino. 💙";
+            } else if (puntos >= 3) {
+                mensaje = "¡Buen intento! Repasa un poco y vuelve a intentarlo. 📚";
+            } else {
+                mensaje = "Sigue practicando. ¡Tú puedes mejorar! 💪";
+            }
+
+            document.getElementById("mensaje").textContent = mensaje;
+
+            document.getElementById("resultado").scrollIntoView({
+                behavior: "smooth",
+                block: "center"
+            });
+        });
+
+        formulario.addEventListener("reset", function() {
+            document.getElementById("resultado").style.display = "none";
+        });
+    </script>
+
+</body>
+</html>

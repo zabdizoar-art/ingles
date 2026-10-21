@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Explicación Tag Questions</title>
+
+    <style>
+        
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            background: linear-gradient(
+                135deg,
+                rgb(155, 215, 250),
+                rgb(105, 185, 235),
+                rgb(195, 230, 255),
+                rgb(125, 195, 240)
+            );
+
+            background-attachment: fixed;
+            font-family: 'Segoe UI', Arial, sans-serif;
+            color: rgb(35, 65, 100);
+            margin: 0;
+            padding: 35px 15px;
+            line-height: 1.8;
+        }
+
+        
+
+        .contenedor {
+            max-width: 950px;
+            margin: auto;
+
+            background: linear-gradient(
+                160deg,
+                rgb(255, 255, 255),
+                rgb(235, 247, 255)
+            );
+
+            padding: 35px;
+            border-radius: 24px;
+            border: 2px solid rgb(255, 255, 255);
+
+            box-shadow:
+                0 15px 35px rgba(25, 90, 150, 0.25),
+                0 5px 12px rgba(40, 125, 190, 0.15);
+
+            animation: aparecer 0.8s ease;
+        }
+
+        @keyframes aparecer {
+            from {
+                opacity: 0;
+                transform: translateY(15px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+       
+
+        h1 {
+            color: rgb(30, 105, 175);
+            font-size: 34px;
+            text-align: center;
+            margin-bottom: 25px;
+
+            text-shadow:
+                1px 2px 3px rgba(70, 145, 200, 0.18);
+        }
+
+        
+        h2 {
+            color: rgb(255, 255, 255);
+
+            background: linear-gradient(
+                100deg,
+                rgb(35, 115, 185),
+                rgb(65, 165, 225),
+                rgb(85, 185, 235)
+            );
+
+            padding: 13px 20px;
+            border-left: 7px solid rgb(125, 215, 255);
+            border-radius: 10px;
+            margin-top: 32px;
+
+            box-shadow:
+                0 5px 12px rgba(35, 115, 185, 0.20);
+        }
+
+        
+
+        .introduccion {
+            background: linear-gradient(
+                135deg,
+                rgb(218, 240, 255),
+                rgb(235, 248, 255)
+            );
+
+            padding: 23px;
+            border-radius: 16px;
+            border: 1px solid rgb(160, 210, 245);
+            border-top: 5px solid rgb(65, 155, 220);
+            margin-bottom: 28px;
+
+            box-shadow:
+                0 6px 15px rgba(50, 125, 180, 0.10);
+        }
+
+        .introduccion p {
+            margin: 10px 0;
+        }
+
+        
+
+        .tarjeta {
+            background: linear-gradient(
+                120deg,
+                rgb(255, 255, 255),
+                rgb(232, 246, 255)
+            );
+
+            padding: 18px 22px;
+            margin: 18px 0;
+            border-radius: 14px;
+            border: 1px solid rgb(190, 225, 250);
+            border-left: 5px solid rgb(75, 160, 225);
+
+            box-shadow:
+                0 4px 12px rgba(45, 115, 175, 0.08);
+
+            transition:
+                transform 0.3s ease,
+                box-shadow 0.3s ease,
+                border-color 0.3s ease;
+        }
+
+        .tarjeta:hover {
+            transform: translateY(-5px);
+            border-left-color: rgb(25, 110, 195);
+
+            box-shadow:
+                0 10px 22px rgba(35, 110, 180, 0.18);
+        }
+
+        
+
+        strong {
+            color: rgb(25, 105, 175);
+        }
+
+        b {
+            color: rgb(40, 75, 110);
+        }
+
+        p {
+            margin-top: 10px;
+            margin-bottom: 10px;
+        }
+
+       
+
+        .video-contenedor {
+            text-align: center;
+            margin: 30px 0;
+        }
+
+        video {
+            display: inline-block;
+            width: 100%;
+            max-width: 650px;
+            height: auto;
+
+            border-radius: 17px;
+            border: 5px solid rgb(125, 195, 240);
+            background-color: rgb(210, 235, 255);
+
+            box-shadow:
+                0 10px 25px rgba(25, 90, 155, 0.25),
+                0 0 0 5px rgba(185, 225, 255, 0.5);
+        }
+
+        
+
+        .boton-inicio {
+            display: inline-block;
+
+            background: linear-gradient(
+                135deg,
+                rgb(35, 115, 190),
+                rgb(65, 165, 230)
+            );
+
+            color: rgb(255, 255, 255);
+            text-decoration: none;
+            padding: 13px 40px;
+            margin-top: 22px;
+            border-radius: 35px;
+
+            font-weight: bold;
+            letter-spacing: 1px;
+
+            border: 2px solid rgb(150, 215, 250);
+
+            box-shadow:
+                0 6px 15px rgba(30, 105, 175, 0.25);
+
+            transition: all 0.3s ease;
+        }
+
+        .boton-inicio:hover {
+            background: linear-gradient(
+                135deg,
+                rgb(20, 85, 155),
+                rgb(35, 125, 200)
+            );
+
+            transform: translateY(-3px) scale(1.04);
+
+            box-shadow:
+                0 10px 22px rgba(25, 90, 160, 0.30);
+        }
+
+        
+
+        .pie {
+            margin-top: 32px;
+            padding-top: 18px;
+
+            border-top: 2px solid rgb(195, 225, 248);
+
+            color: rgb(75, 125, 165);
+            font-size: 13px;
+        }
+
+        
+        @media (max-width: 600px) {
+
+            body {
+                padding: 15px 10px;
+            }
+
+            .contenedor {
+                padding: 20px 14px;
+                border-radius: 17px;
+            }
+
+            h1 {
+                font-size: 26px;
+            }
+
+            h2 {
+                font-size: 19px;
+                padding: 11px 14px;
+            }
+
+            .introduccion {
+                padding: 16px;
+            }
+
+            .tarjeta {
+                padding: 14px;
+            }
+
+            .boton-inicio {
+                padding: 12px 32px;
+            }
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <div class="contenedor">
+
+        <center>
+            <h1>EXPLICACION TAG QUESTIONS</h1>
+        </center>
+
+        <div class="introduccion">
+
+            <b>
+                Las tag questions son preguntas cortas que se añaden
+                al final de una oración para confirmar o verificar la
+                información, usando la forma opuesta (afirmativa o
+                negativa) de la oración principal.
+            </b>
+
+            <br><br>
+
+            <b>
+                Son pequeñas preguntas que se colocan al final de una
+                oración en inglés para solicitar confirmación o acuerdo.
+                Por ejemplo: Your son is growing up so fast, isn’t he?
+                (“Tu hijo está creciendo muy rápido, ¿no?”) Aquí, la
+                oración principal es afirmativa y la tag question es
+                negativa, buscando la confirmación del oyente
+            </b>
+
+        </div>
+
+        <h1>TAG QUESTION</h1>
+
+        <div class="tarjeta">
+
+            <p>
+                Las <strong>tag questions</strong> son preguntas cortas
+                que se agregan al final de una oración para confirmar
+                información.
+            </p>
+
+        </div>
+
+        <h2>REGLAS</h2>
+
+        <div class="tarjeta">
+
+            <p>
+                <strong>
+                    Oración afirmativa → tag negativa:
+                </strong>
+
+                <br>
+
+                She is an artist, isn’t she?
+            </p>
+
+        </div>
+
+        <div class="tarjeta">
+
+            <p>
+                <strong>
+                    Oración negativa → tag afirmativa:
+                </strong>
+
+                <br>
+
+                These boots aren’t waterproof, are they?
+            </p>
+
+        </div>
+
+        <h2>AUXILIAR Y PRONOMBRE</h2>
+
+        <div class="tarjeta">
+
+            <p>
+                Se utiliza el verbo auxiliar de la oración y el pronombre
+                del sujeto. Si no hay auxiliar, se usa
+                <strong>do, does</strong> o <strong>did</strong>.
+            </p>
+
+            <p>
+                You like sushi, don’t you?
+
+                <br>
+
+                Paul played the guitar, didn’t he?
+            </p>
+
+        </div>
+
+        <h2>USOS</h2>
+
+        <div class="tarjeta">
+
+            <p>
+                Se utilizan para confirmar información, mantener una
+                conversación y expresar sorpresa o interés.
+            </p>
+
+        </div>
+
+        <h2>RESUMEN</h2>
+
+        <div class="tarjeta">
+
+            <p>
+                Las tag questions siguen una regla sencilla:
+                <strong>afirmativa → negativa</strong> y
+                <strong>negativa → afirmativa</strong>.
+            </p>
+
+        </div>
+
+        <h2>VIDEO EXPLICATIVO</h2>
+
+        <div class="video-contenedor">
+
+            <video controls height="300">
+                <source src="videxp.mp4" type="video/mp4">
+            </video>
+
+        </div>
+
+        <center>
+
+            <a href="index1.html" class="boton-inicio">
+                INICIO
+            </a>
+
+            <div class="pie">
+                Explicación de inglés | Tag Questions
+            </div>
+
+        </center>
+
+    </div>
+
+</body>
+</html>
